@@ -1,0 +1,58 @@
+﻿@page
+@model swimmresult1.Pages.RegisterAdminModel
+
+<!-- Jauna administratora reģistrācijas lapa -->
+
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="utf-8" />
+    <title>Jauns admin</title>
+</head>
+<body>
+
+    <header style="display:flex; justify-content:space-between; padding:20px;">
+
+        <!-- Poga atpakaļ uz autorizācijas lapu -->
+        <button onclick="location.href='/AdminLogin'">
+            ←
+        </button>
+
+        <div style="font-size:28px; font-weight:bold;">
+            JAUNS ADMIN
+        </div>
+
+        <div></div>
+
+    </header>
+
+    <div style="display:flex; justify-content:center; align-items:center; height:70vh;">
+        <form method="post" style="display:flex; flex-direction:column; width:300px;">
+
+            <!-- Kļūdas paziņojums -->
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div style="color:red; font-weight:bold; margin-bottom:10px;">
+                    @Model.ErrorMessage
+                </div>
+            }
+
+            <input type="text" name="Vards" placeholder="Vārds" />
+            <input type="text" name="Uzvards" placeholder="Uzvārds" />
+
+            <!-- Trenera ID ar paskaidrojumu -->
+            <input type="text" name="TreneraId" placeholder="Trenera ID (6 cipari)" />
+
+            <input type="text" name="Klubs" placeholder="Kluba nosaukums" />
+            <input type="password" name="Parole" placeholder="Parole" />
+            <input type="password" name="RepeatParole" placeholder="Atkārtot paroli" />
+
+            <button type="submit" style="margin-top:10px;">
+                Reģistrācija
+            </button>
+
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+﻿@page
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="utf-8" />
+    <title>Swimmresult</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f6fc;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        .admin-btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+        }
+
+        .search-btn {
+            padding: 20px 50px;
+            font-size: 22px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Swimmresult</div>
+        <button class="admin-btn" onclick="location.href='/AdminLogin'">
+            Administrators
+        </button>
+    </header>
+
+    <div class="main">
+        <button class="search-btn" onclick="location.href='/SearchSportist'">
+            Atrast sportistu
+        </button>
+    </div>
+
+</body>
+</html>

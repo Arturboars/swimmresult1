@@ -1,0 +1,57 @@
+﻿@page
+@model swimmresult1.Pages.AdminPanelModel
+
+<h2>Welcome @Model.AdminName</h2>
+<h3>ID @Model.AdminId</h3>
+
+@if (!string.IsNullOrEmpty(Model.SuccessMessage))
+{
+    <div style="color:green; font-weight:bold;">
+        @Model.SuccessMessage
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div style="color:red; font-weight:bold;">
+        @Model.ErrorMessage
+    </div>
+}
+
+<form method="post">
+
+    <input type="hidden" name="AdminName" value="@Model.AdminName" />
+    <input type="hidden" name="AdminId" value="@Model.AdminId" />
+
+    <input type="text" name="SportistaVards" placeholder="Vārds sportista" required />
+    <input type="text" name="SportistaUzvards" placeholder="Uzvārds sportista" required />
+    <input type="text" name="SportistaId" placeholder="ID sportista (10 cipari)" required />
+    
+    <select name="Distance">
+        <option>50 free</option>
+        <option>100 free</option>
+        <option>200 free</option>
+        <option>400 free</option>
+        <option>800 free</option>
+        <option>1500 free</option>
+        <option>50 backstroke</option>
+        <option>100 backstroke</option>
+        <option>200 backstroke</option>
+        <option>50 brass</option>
+        <option>100 brass</option>
+        <option>200 brass</option>
+        <option>50 butterfly</option>
+        <option>100 butterfly</option>
+        <option>200 butterfly</option>
+        <option>100 medley</option>
+        <option>200 medley</option>
+        <option>400 medley</option>
+    </select>
+
+    <input type="text" name="Laiks" placeholder="Laiks" required />
+
+    <hr />
+
+    <button type="submit">Ievadīt sportistu</button>
+
+</form>

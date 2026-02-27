@@ -1,0 +1,75 @@
+﻿@page
+@model swimmresult1.Pages.SearchSportistModel
+
+<h1>SWIMMRESULT</h1>
+
+<button onclick="location.href='/'">Uz sākumu</button>
+
+<form method="post">
+    <input type="text" name="Vards" placeholder="Vārds" required />
+    <input type="text" name="Uzvards" placeholder="Uzvārds" required />
+    <input type="text" name="SportistaId" placeholder="ID sportista" required />
+    <hr />
+    <button type="submit">Atrast sportista rezultātus</button>
+</form>
+
+@if (Model.ResultsByDistance != null && Model.ResultsByDistance.Count > 0)
+{
+    <h3>Rezultāti</h3>
+
+    <div>
+        <strong>Klubs:</strong> @Model.Klubs
+    </div>
+
+    <hr />
+
+    @foreach (var item in Model.ResultsByDistance)
+    {
+        <div style="margin-bottom:20px;">
+            <strong>@item.Key</strong><br />
+
+            @{
+                var bestTime = item.Value.First();
+            }
+
+            @foreach (var time in item.Value)
+            {
+                if (time == bestTime)
+                {
+                    <span style="font-weight:bold;">@time</span>
+                }
+                else
+                {
+                    <span>@time</span>
+                }
+
+                if (time != item.Value.Last())
+                {
+                    <span> | </span>
+                }
+            }
+
+            @if (Model.ProgressByDistance.ContainsKey(item.Key))
+            {
+                var progress = Model.ProgressByDistance[item.Key];
+
+                if (progress > 0)
+                {
+                    <div style="color:green;">
+                        Uzlabojums: +@progress %
+                    </div>
+                }
+                else if (progress < 0)
+                {
+                    <div style="color:red;">
+                        Pasliktinājums: @progress %
+                    </div>
+                }
+            }
+        </div>
+    }
+}
+else if (Model.Searched)
+{
+    <div style="color:red;">Sportists nav atrasts</div>
+}
